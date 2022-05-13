@@ -2,7 +2,8 @@ import React from "react";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import {  Bar,Pie } from "react-chartjs-2";
+//import { Line } from "react-chartjs-2";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -31,12 +32,56 @@ import Header from "components/Headers/Header.js";
 import {
   chartOptions,
   parseOptions,
-  chartExample1,
+  //chartExample1,
   chartExample2,
 } from "variables/charts.js";
 
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 
+const piedata = {
+  labels: [
+    'Mâles',
+    'Femelles'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [42.64, 57.36],
+    backgroundColor: [
+      'rgb(54, 162, 235)',
+      'rgb(255, 99, 132)',
+      
+      
+    ],
+    hoverOffset: 4
+  }]
+};
+const piedata2 = {
+  labels: [
+    'Turned over',
+    'Travaillent'
+
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [11.46,88.54],
+    backgroundColor: [
+      'rgb(70, 70, 70)',
+      'rgb(255,214,0)',
+
+      
+      
+    ],
+    hoverOffset: 4
+  }]
+};
+const pieoptions = {
+  legend:{display:true},
+  title: {display: true,text: 'Pourcentage Mâles/Femelles'}
+}
+const pieoptions2 = {
+  legend:{display:true},
+  title: {display: true,text: 'Taux de turnover'}
+}
 const useStyles = makeStyles(componentStyles);
 
 function Dashboard() {
@@ -103,7 +148,7 @@ function Dashboard() {
                         marginBottom="0!important"
                       >
                         <Box component="span" color={theme.palette.white.main}>
-                        la valeur des ventes
+                         Statistiques
                         </Box>
                       </Box>
                     </Grid>
@@ -148,12 +193,26 @@ function Dashboard() {
                 classes={{ root: classes.cardHeaderRoot }}
               ></CardHeader>
               <CardContent>
-                <Box position="relative" height="350px">
-                  <Line
+                <Box position="relative" height="350px" width="50%" style = {{display:"flex"}}>
+                  <Pie
+                    style = {{float:"left"}}
+                    data={piedata}
+                    options={pieoptions}
+                    getDatasetAtEvent={(e) => console.log(e)}
+                  />
+                  <Pie
+                    style = {{float:"right"}}
+                    data={piedata2}
+                    options={pieoptions2}
+                    getDatasetAtEvent={(e) => console.log(e)}
+                  />
+                  
+                  {/*<Line
                     data={chartExample1[chartExample1Data]}
                     options={chartExample1.options}
                     getDatasetAtEvent={(e) => console.log(e)}
-                  />
+              />*/}
+
                 </Box>
               </CardContent>
             </Card>
@@ -223,7 +282,7 @@ function Dashboard() {
                         variant="h3"
                         marginBottom="0!important"
                       >
-                        Les chefs de département
+                        Les employés
                       </Box>
                     </Grid>
                     <Grid item xs="auto">
@@ -261,7 +320,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Nom
+                        Department
                       </TableCell>
                       <TableCell
                         classes={{
@@ -271,7 +330,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Salaire
+                        EmployeeNumber
                       </TableCell>
                       <TableCell
                         classes={{
@@ -281,7 +340,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Numero de téléphone
+                        JobRole
                       </TableCell>
                       <TableCell
                         classes={{
@@ -291,82 +350,111 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Département
+                      CurrProjects
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
+                        Gender
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
+                        ProjectsDone
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
+                        Age
                       </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        John Doe
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        HR
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        150,000
+                        5325
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        90 556 448
+                        Technician
                       </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          //component={ArrowUpward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.success.main}
-                        />
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        3
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        23
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        41
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        R&D
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        2352
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Engineer
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        2
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Female
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        15
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        35
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
                         Sales
-                      </Box>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        Jessica Jones
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        170,000
+                      1525
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        90 878 654
+                        Salesman
                       </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          //component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.warning.main}
-                        />
-                        R&B
-                      </Box>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        1
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        10
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        31
+                      </TableCell>
                     </TableRow>
-                    <TableRow>
+                    {/*<TableRow>
                       <TableCell
                         classes={{
                           root:
@@ -400,7 +488,7 @@ function Dashboard() {
                         />
                         HR
                       </Box>
-                    </TableRow>
+                      </TableRow>*/}
                     {/*<TableRow>
                       <TableCell
                         classes={{
@@ -512,7 +600,7 @@ function Dashboard() {
                         variant="h3"
                         marginBottom="0!important"
                       >
-                        Trafic social
+                        Salaire moyen par département
                       </Box>
                     </Grid>
                     <Grid item xs="auto">
@@ -550,7 +638,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Référence
+                        Département
                       </TableCell>
                       <TableCell
                         classes={{
@@ -560,7 +648,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Visiteurs
+                        Salaire
                       </TableCell>
                       <TableCell
                         classes={{
@@ -585,12 +673,12 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        Facebook
+                        R&D
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        1,480
+                        9947
                       </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
                           <Box component="span" marginRight=".5rem">
                             60%
@@ -606,7 +694,7 @@ function Dashboard() {
                             />
                           </Box>
                         </Box>
-                      </TableCell>
+                            </TableCell>*/}
                     </TableRow>
                     <TableRow>
                       <TableCell
@@ -620,12 +708,12 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        Facebook
+                        HR
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        5,480
+                        151,735
                       </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
                           <Box component="span" marginRight=".5rem">
                             70%
@@ -641,7 +729,7 @@ function Dashboard() {
                             />
                           </Box>
                         </Box>
-                      </TableCell>
+                            </TableCell>*/}
                     </TableRow>
                     <TableRow>
                       <TableCell
@@ -655,12 +743,12 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        Google
+                        Sales
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        4,807
+                      21,433
                       </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
                           <Box component="span" marginRight=".5rem">
                             80%
@@ -676,7 +764,7 @@ function Dashboard() {
                             />
                           </Box>
                         </Box>
-                      </TableCell>
+                            </TableCell>*/}
                     </TableRow>
                     <TableRow>
                       <TableCell

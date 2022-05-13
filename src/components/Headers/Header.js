@@ -36,7 +36,7 @@ const Header = () => {
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
                   subtitle="Salaire Moyen"
-                  title="70,897"
+                  title="4622"
                   icon="ni ni-money-coins"
                   color="bgError"
                   footer={
@@ -96,7 +96,7 @@ const Header = () => {
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
                   subtitle="Nombre d'employés"
-                  title="924"
+                  title="6865"
                   icon={GroupAdd}
                   color="bgWarningLight"
                   footer={
