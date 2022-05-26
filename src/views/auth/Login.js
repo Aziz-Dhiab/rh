@@ -6,16 +6,17 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Checkbox from "@material-ui/core/Checkbox";
+//import CardHeader from "@material-ui/core/CardHeader";
+//import Checkbox from "@material-ui/core/Checkbox";
 import FilledInput from "@material-ui/core/FilledInput";
 import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+//import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import InputAdornment from "@material-ui/core/InputAdornment";
 // @material-ui/icons components
-import Email from "@material-ui/icons/Email";
+//import Email from "@material-ui/icons/Email";
 import Lock from "@material-ui/icons/Lock";
+import { useHistory } from "react-router-dom";
 
 // core components
 import componentStyles from "assets/theme/views/auth/login.js";
@@ -23,76 +24,25 @@ import componentStyles from "assets/theme/views/auth/login.js";
 const useStyles = makeStyles(componentStyles);
 
 function Login() {
+  const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
+  const handleSubmit = (event)=>{
+    event.preventDefault();
+    if(textInput=="admin"){
+      history.push("/admin");
+    } else if (textInput=="chef")
+      history.push("/admin/chef");
+  }
+
+  const [textInput, setTextInput] = React.useState('');
+
+
   return (
     <>
       <Grid item xs={12} lg={5} md={7}>
         <Card classes={{ root: classes.cardRoot }}>
-          <CardHeader
-            className={classes.cardHeader}
-            title={
-              <Box
-                fontSize="80%"
-                fontWeight="400"
-                component="small"
-                color={theme.palette.gray[600]}
-              >
-                Sign in with
-              </Box>
-            }
-            titleTypographyProps={{
-              component: Box,
-              textAlign: "center",
-              marginBottom: "1rem!important",
-              marginTop: ".5rem!important",
-              fontSize: "1rem!important",
-            }}
-            subheader={
-              <Box textAlign="center">
-                <Box
-                  component={Button}
-                  variant="contained"
-                  marginRight=".5rem!important"
-                  classes={{ root: classes.buttonRoot }}
-                >
-                  <Box component="span" marginRight="4px">
-                    <Box
-                      alt="..."
-                      component="img"
-                      width="20px"
-                      className={classes.buttonImg}
-                      src={
-                        require("assets/img/icons/common/github.svg").default
-                      }
-                    ></Box>
-                  </Box>
-                  <Box component="span" marginLeft=".75rem">
-                    Github
-                  </Box>
-                </Box>
-                <Button
-                  variant="contained"
-                  classes={{ root: classes.buttonRoot }}
-                >
-                  <Box component="span" marginRight="4px">
-                    <Box
-                      alt="..."
-                      component="img"
-                      width="20px"
-                      className={classes.buttonImg}
-                      src={
-                        require("assets/img/icons/common/google.svg").default
-                      }
-                    ></Box>
-                  </Box>
-                  <Box component="span" marginLeft=".75rem">
-                    Google
-                  </Box>
-                </Button>
-              </Box>
-            }
-          ></CardHeader>
+          
           <CardContent classes={{ root: classes.cardContent }}>
             <Box
               color={theme.palette.gray[600]}
@@ -102,15 +52,14 @@ function Login() {
               fontSize="1rem"
             >
               <Box fontSize="80%" fontWeight="400" component="small">
-                Or sign in with credentials
+                Veuillez introduire les données fournies par votre employeur
               </Box>
             </Box>
-            <FormControl
+            {/*<FormControl
               variant="filled"
               component={Box}
               width="100%"
-              marginBottom="1rem!important"
-            >
+              marginBottom="1rem!important">
               <FilledInput
                 autoComplete="off"
                 type="email"
@@ -121,7 +70,7 @@ function Login() {
                   </InputAdornment>
                 }
               />
-            </FormControl>
+              </FormControl>*/}
             <FormControl
               variant="filled"
               component={Box}
@@ -129,9 +78,11 @@ function Login() {
               marginBottom="1rem!important"
             >
               <FilledInput
+                value= {textInput}
+                onChange={(event) => setTextInput(event.target.value)}
                 autoComplete="off"
                 type="password"
-                placeholder="Password"
+                placeholder="Key"
                 startAdornment={
                   <InputAdornment position="start">
                     <Lock />
@@ -139,31 +90,31 @@ function Login() {
                 }
               />
             </FormControl>
-            <FormControlLabel
+            {/*<FormControlLabel
               value="end"
               control={<Checkbox color="primary" />}
-              label="Remeber me"
+              label="Garder ma session"
               labelPlacement="end"
               classes={{
                 root: classes.formControlLabelRoot,
                 label: classes.formControlLabelLabel,
               }}
-            />
+            />*/}
             <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-              <Button color="primary" variant="contained">
+              <Button onClick={handleSubmit} color="primary" variant="contained">
                 Sign in
               </Button>
             </Box>
           </CardContent>
         </Card>
-        <Grid container component={Box} marginTop="1rem">
+        {/*<Grid container component={Box} marginTop="1rem">
           <Grid item xs={6} component={Box} textAlign="left">
             <a
               href="#admui"
               onClick={(e) => e.preventDefault()}
               className={classes.footerLinks}
             >
-              Forgot password
+              Mot de passe oublié
             </a>
           </Grid>
           <Grid item xs={6} component={Box} textAlign="right">
@@ -172,10 +123,10 @@ function Login() {
               onClick={(e) => e.preventDefault()}
               className={classes.footerLinks}
             >
-              Create new account
+              
             </a>
           </Grid>
-        </Grid>
+          </Grid>*/}
       </Grid>
     </>
   );

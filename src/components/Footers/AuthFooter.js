@@ -2,11 +2,11 @@ import React from "react";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
+/*import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import ListItem from "@material-ui/core/ListItem";*/
 
 // core components
 import componentStyles from "assets/theme/components/auth-footer.js";
@@ -16,7 +16,8 @@ const useStyles = makeStyles(componentStyles);
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box component="footer" width="100%" paddingTop="1rem">
+    <div></div>
+    /*<Box component="footer" width="100%" paddingTop="1rem">
       <Container
         component={Box}
         maxWidth="xl"
@@ -115,7 +116,7 @@ const Footer = () => {
           </Box>
         </Grid>
       </Container>
-    </Box>
+    </Box>*/
   );
 };
 

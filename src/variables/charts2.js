@@ -374,11 +374,11 @@ let chartExample2 = {
     },
   },
   data: {
-    labels: ["taux d'appsenteisme moyen", "taux d'evolution de carriere", "taux de fidélisation", ],
+    labels: ["Prospection 1", "Plan Marketing 2022", "Prospection B2B", "Rapport d'exercice"],
     datasets: [
       {
         label: "Sales",
-        data: [30.94, 1.4958862, 35 ],
+        data: [25, 20, 30, 22],
         maxBarThickness: 10,
       },
     ],

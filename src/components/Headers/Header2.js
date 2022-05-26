@@ -20,7 +20,7 @@ import componentStyles from "assets/theme/components/header.js";
 
 const useStyles = makeStyles(componentStyles);
 
-const Header = () => {
+const Header2 = () => {
   const classes = useStyles();
   const theme = useTheme();
   return (
@@ -35,8 +35,8 @@ const Header = () => {
             <Grid container>
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
-                  subtitle="Salaire Moyen"
-                  title="4622"
+                  subtitle="Salaire Moyen du département"
+                  title="3275.148"
                   icon="ni ni-money-coins"
                   color="bgError"
                   footer={
@@ -66,7 +66,7 @@ const Header = () => {
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
                   subtitle="Taux de satisfaction moyen"
-                  title="41.831%"
+                  title="70.5%"
                   icon="ni ni-satisfied"
                   color="bgWarning"
                   footer={
@@ -95,8 +95,8 @@ const Header = () => {
               </Grid>
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
-                  subtitle="Nombre d'employés"
-                  title="1470"
+                  subtitle="Nombre d'employés du département"
+                  title="354"
                   icon={GroupAdd}
                   color="bgWarningLight"
                   footer={
@@ -125,8 +125,8 @@ const Header = () => {
               </Grid>
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
-                  subtitle="Performance moyenne"
-                  title="40.087%"
+                  subtitle="Performance moyenne du département"
+                  title="78.43%"
                   icon={EmojiEvents}
                   color="bgInfo"
                   footer={
@@ -161,4 +161,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;

@@ -13,9 +13,9 @@ import Search from "@material-ui/icons/Search";
 
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import AdminFooter from "components/Footers/AdminFooter.js";
+//import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import NavbarDropdown from "components/Dropdowns/NavbarDropdown.js";
+//import NavbarDropdown from "components/Dropdowns/NavbarDropdown.js";
 
 import routes from "routes.js";
 
@@ -68,7 +68,6 @@ const Admin = () => {
             imgSrc: require("../assets/img/brand/argon-react.png").default,
             imgAlt: "...",
           }}
-          dropdown={<NavbarDropdown />}
           input={
             <FormControl variant="outlined" fullWidth>
               <InputLabel htmlFor="outlined-adornment-search-responsive">
@@ -102,7 +101,7 @@ const Admin = () => {
             component={Box}
             classes={{ root: classes.containerRoot }}
           >
-            <AdminFooter />
+            {/*<AdminFooter />*/}
           </Container>
         </Box>
       </>

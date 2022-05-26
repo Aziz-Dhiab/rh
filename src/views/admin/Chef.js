@@ -2,9 +2,8 @@ import React from "react";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
-import { Bar } from "react-chartjs-2";
-import { Pie } from "react-chartjs-2";
-//import { Line } from "react-chartjs-2";
+import {  Bar } from "react-chartjs-2";
+//import { Line,Pie } from "react-chartjs-2";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -29,108 +28,104 @@ import axios from 'axios';
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
 
 // core components
-import Header from "components/Headers/Header.js";
+import Header2 from "components/Headers/Header2.js";
 
 import {
   chartOptions,
   parseOptions,
   //chartExample1,
   chartExample2,
-} from "variables/charts.js";
+} from "variables/charts2";
 
 import componentStyles from "assets/theme/views/admin/dashboard.js";
-
-
 
 const baroptions = {
   responsive: true,
   plugins: {
     legend: {
-      position: "top",
+      position: 'top',
     },
     title: {
       display: true,
-      text: "Taux d'absenteisme moyen par département ",
+      text: "Taux d'absenteïsme moyen par Job Role ",
     },
   },
+  
 };
 
-const barlabels = ["HR", "Sales", "R&D"];
+const barlabels = ["Manager", "Sales Executive", "Sales Representative"]
 const bardata = {
   labels: barlabels,
-  datasets: [
-    {
-      label: "Nombre",
-      data: [210, 216, 207],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-        "rgba(255, 205, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(201, 203, 207, 0.2)",
-      ],
-      borderColor: [
-        "rgb(255, 99, 132)",
-        "rgb(255, 159, 64)",
-        "rgb(255, 205, 86)",
-        "rgb(75, 192, 192)",
-        "rgb(54, 162, 235)",
-        "rgb(153, 102, 255)",
-        "rgb(201, 203, 207)",
-      ],
-      barThickness: 200,
-      borderWidth: 1,
-    },
-  ],
+  datasets: [{
+    label: 'Taux',
+    data: [14.2, 19.3, 21.5],
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    barThickness:200,
+    borderWidth: 1
+  }]
 };
 
 const piedata = {
-  labels: ["Mâles", "Femelles"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [42.64, 57.36],
-      backgroundColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)"],
-      hoverOffset: 4,
-    },
+  labels: [
+    'Mâles',
+    'Femelles'
   ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [42.64, 57.36],
+    backgroundColor: [
+      'rgb(54, 162, 235)',
+      'rgb(255, 99, 132)',
+      
+      
+    ],
+    hoverOffset: 4
+  }]
 };
 const piedata2 = {
-  labels: ["Turned over", "Travaillent"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [11.46, 88.54],
-      backgroundColor: ["rgb(70, 70, 70)", "rgb(255,214,0)"],
-      hoverOffset: 4,
-    },
+  labels: [
+    'Turned over',
+    'Travaillent'
+
   ],
-};
-const piedata3 = {
-  labels: ["Nouveaux salariés", "Salariés permanants"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [30, 70],
-      backgroundColor: ["rgb(70, 70, 100)", "rgb(150,214,0)"],
-      hoverOffset: 4,
-    },
-  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [11.46,88.54],
+    backgroundColor: [
+      'rgb(70, 70, 70)',
+      'rgb(255,214,0)',
+
+      
+      
+    ],
+    hoverOffset: 4
+  }]
 };
 const pieoptions = {
-  legend: { display: true },
-  title: { display: true, text: "Pourcentage Mâles/Femelles" },
-};
+  legend:{display:true},
+  title: {display: true,text: 'Pourcentage Mâles/Femelles'}
+}
 const pieoptions2 = {
-  legend: { display: true },
-  title: { display: true, text: "Taux de turnover" },
-};
-const pieoptions3 = {
-  legend: { display: true },
-  title: { display: true, text: "Proportion des nouveaux salariés" },
-};
+  legend:{display:true},
+  title: {display: true,text: 'Taux de turnover'}
+}
 const useStyles = makeStyles(componentStyles);
 
 function Dashboard() {
@@ -138,7 +133,6 @@ function Dashboard() {
   const theme = useTheme();
   const [activeNav, setActiveNav] = React.useState(1);
   const [chartExample1Data, setChartExample1Data] = React.useState("data1");
-
   const [EmpolyeeData, setEmpolyeeData] = React.useState([])
 
   if (window.Chart) {
@@ -162,7 +156,7 @@ function Dashboard() {
 
   return (
     <>
-      <Header />
+      <Header2 />
       {/* Page content */}
       <Container
         maxWidth={false}
@@ -210,7 +204,7 @@ function Dashboard() {
                         marginBottom="0!important"
                       >
                         <Box component="span" color={theme.palette.white.main}>
-                          Nombre d'emplyoés par département
+                         Taux d'absentéïsme par Job Role
                         </Box>
                       </Box>
                     </Grid>
@@ -254,14 +248,8 @@ function Dashboard() {
                 }
                 classes={{ root: classes.cardHeaderRoot }}
               ></CardHeader>
-
               <CardContent>
-                <Box
-                  position="relative"
-                  height="350px"
-                  width="100%"
-                  style={{ display: "flex" }}
-                >
+                <Box position="relative" height="350px" width="100%" style = {{display:"flex"}}>
                   {/*<Pie
                     style = {{float:"left"}}
                     data={piedata}
@@ -274,47 +262,24 @@ function Dashboard() {
                     options={pieoptions2}
                     getDatasetAtEvent={(e) => console.log(e)}
               />*/}
-                  <Bar
-                    data={bardata}
-                    options={baroptions}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-
+                <Bar
+                  
+                  data={bardata}
+                  options={baroptions}
+                  getDatasetAtEvent={(e) => console.log(e)}
+                />
+                  
                   {/*<Line
                     data={chartExample1[chartExample1Data]}
                     options={chartExample1.options}
                     getDatasetAtEvent={(e) => console.log(e)}
               />*/}
-                </Box>
-                <Box
-                  position="relative"
-                  height="350px"
-                  width="33%"
-                  style={{ display: "flex", float: "left" }}
-                >
-                  <Pie
-                    style={{ float: "left" }}
-                    data={piedata}
-                    options={pieoptions}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-                  <Pie
-                    data={piedata2}
-                    options={pieoptions2}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-                  <Pie
-                    style={{ float: "right" }}
-                    data={piedata3}
-                    options={pieoptions3}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
+
                 </Box>
               </CardContent>
             </Card>
           </Grid>
-
-          <Grid  item xs={12} xl={4}>
+          <Grid item xs={12} xl={4}>
             <Card classes={{ root: classes.cardRoot }}>
               <CardHeader
                 title={
@@ -322,7 +287,7 @@ function Dashboard() {
                     {/*profane*/}
                   </Box>
                 }
-                subheader="KPIs"
+                subheader="Projets en cours pour le département Sales"
                 classes={{ root: classes.cardHeaderRoot }}
                 titleTypographyProps={{
                   component: Box,
@@ -349,193 +314,6 @@ function Dashboard() {
                 </Box>
               </CardContent>
             </Card>
-            <Grid item xs={12} xl={12} style = {{marginTop:"5%"}}>
-            <Card classes={{ root: classes.cardRoot }}>
-              <CardHeader
-                subheader={
-                  <Grid
-                    container
-                    component={Box}
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Grid item xs="auto">
-                      <Box
-                        component={Typography}
-                        variant="h3"
-                        marginBottom="0!important"
-                      >
-                        Taux d'Absenteïsme par departement
-                      </Box>
-                    </Grid>
-                    <Grid item xs="auto">
-                      <Box
-                        justifyContent="flex-end"
-                        display="flex"
-                        flexWrap="wrap"
-                      >
-                        {/*<Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                        >
-                          See all
-                        </Button>*/}
-                      </Box>
-                    </Grid>
-                  </Grid>
-                }
-                classes={{ root: classes.cardHeaderRoot }}
-              ></CardHeader>
-              <TableContainer>
-                <Box
-                  component={Table}
-                  alignItems="center"
-                  marginBottom="0!important"
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootHead,
-                        }}
-                      >
-                        Département
-                      </TableCell>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootHead,
-                        }}
-                      >
-                        Absenteïsme
-                      </TableCell>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootHead,
-                        }}
-                      ></TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        R&D
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                      28.58%
-                      </TableCell>
-                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
-                            60%
-                          </Box>
-                          <Box width="100%">
-                            <LinearProgress
-                              variant="determinate"
-                              value={60}
-                              classes={{
-                                root: classes.linearProgressRoot,
-                                bar: classes.bgGradientError,
-                              }}
-                            />
-                          </Box>
-                        </Box>
-                            </TableCell>*/}
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        HR
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                      31,83%
-                      </TableCell>
-                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
-                            70%
-                          </Box>
-                          <Box width="100%">
-                            <LinearProgress
-                              variant="determinate"
-                              value={70}
-                              classes={{
-                                root: classes.linearProgressRoot,
-                                bar: classes.bgGradientSuccess,
-                              }}
-                            />
-                          </Box>
-                        </Box>
-                            </TableCell>*/}
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        Sales
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                      32.29%
-                      </TableCell>
-                      {/*<TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
-                            80%
-                          </Box>
-                          <Box width="100%">
-                            <LinearProgress
-                              variant="determinate"
-                              value={80}
-                              classes={{
-                                root: classes.linearProgressRoot,
-                                bar: classes.bgGradientPrimary,
-                              }}
-                            />
-                          </Box>
-                        </Box>
-                            </TableCell>*/}
-                    </TableRow>
-                  </TableBody>
-                </Box>
-              </TableContainer>
-            </Card>
-          </Grid>
           </Grid>
         </Grid>
         <Grid container component={Box} marginTop="3rem">
@@ -604,7 +382,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        EmployeeNumber
+                        Dépt.
                       </TableCell>
                       <TableCell
                         classes={{
@@ -614,7 +392,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Department
+                        N° Employée
                       </TableCell>
                       <TableCell
                         classes={{
@@ -624,7 +402,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        NumOfCurrProjects
+                        Role
                       </TableCell>
                       <TableCell
                         classes={{
@@ -634,7 +412,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Gender
+                      Projets en Cours
                       </TableCell>
                       <TableCell
                         classes={{
@@ -644,7 +422,17 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        ProjectsDone
+                        Sex
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
+                        Projets Achevés
                       </TableCell>
                       <TableCell
                         classes={{
@@ -656,35 +444,124 @@ function Dashboard() {
                       >
                         Age
                       </TableCell>
-
                     </TableRow>
                   </TableHead>
                   <TableBody>
-
-                    
-                    {EmpolyeeData.map((x) => (
-                      <TableRow>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.EmployeeNumber}
-                        </TableCell>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.Department}
-                        </TableCell>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.NumOfCurrProjects}
-                        </TableCell>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.Gender}
-                        </TableCell>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.ProjectsDone}
-                        </TableCell>
-                        <TableCell classes={{ root: classes.tableCellRoot }}>
-                          {x.Age}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        1
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales Executive
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        3
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        23
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        41
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        3
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Manager
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        2
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Female
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        15
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        35
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      5
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales Representative
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        1
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        10
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        31
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      6
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales Representative
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        1
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        15
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        35
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Sales
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                      7
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Manager
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        2
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        Male
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        11
+                      </TableCell>
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        38
+                      </TableCell>
+                    </TableRow>
                     {/*<TableRow>
                       <TableCell
                         classes={{
@@ -815,7 +692,6 @@ function Dashboard() {
               </TableContainer>
             </Card>
           </Grid>
-
           <Grid item xs={12} xl={4}>
             <Card classes={{ root: classes.cardRoot }}>
               <CardHeader
@@ -832,7 +708,7 @@ function Dashboard() {
                         variant="h3"
                         marginBottom="0!important"
                       >
-                        Salaire moyen par département
+                        Salaire moyen par Job Role
                       </Box>
                     </Grid>
                     <Grid item xs="auto">
@@ -870,7 +746,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Département
+                        Role
                       </TableCell>
                       <TableCell
                         classes={{
@@ -905,10 +781,10 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        R&D
+                        Manager
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        9947
+                        1380
                       </TableCell>
                       {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
@@ -940,10 +816,10 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        HR
+                        Sales Representative
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        151,735
+                        1050.1
                       </TableCell>
                       {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
@@ -975,10 +851,10 @@ function Dashboard() {
                         variant="head"
                         scope="row"
                       >
-                        Sales
+                        Sales Executive
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        21,433
+                      6500.24
                       </TableCell>
                       {/*<TableCell classes={{ root: classes.tableCellRoot }}>
                         <Box display="flex" alignItems="center">
@@ -998,6 +874,7 @@ function Dashboard() {
                         </Box>
                             </TableCell>*/}
                     </TableRow>
+                    
                   </TableBody>
                 </Box>
               </TableContainer>

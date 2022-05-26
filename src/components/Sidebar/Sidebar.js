@@ -58,7 +58,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
       }
       let textContent = (
         <>
-          <Box minWidth="2.25rem" display="flex" alignItems="center">
+          <Box  minWidth="2.25rem" display="flex" alignItems="center">
             {typeof prop.icon === "string" ? (
               <Box
                 component="i"
@@ -140,7 +140,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
   return (
     <>
       <Hidden smDown implementation="css">
-        <Drawer variant="permanent" anchor="left" open>
+        <Drawer  variant="permanent" anchor="left" open>
           <Box paddingBottom="1rem">{logoObject}</Box>
           <List classes={{ root: classes.listRoot }}>
             {createLinks(routes)}
@@ -148,7 +148,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
         </Drawer>
       </Hidden>
       <Hidden mdUp implementation="css">
-        <AppBar position="relative" color="default" elevation={0}>
+        <AppBar  position="relative" color="default" elevation={0}>
           <Toolbar>
             <Container
               display="flex!important"
@@ -173,7 +173,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
             </Container>
           </Toolbar>
         </AppBar>
-        <Menu
+        <Menu 
           anchorEl={anchorEl}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
           id={menuId}

@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 //import SearchIcon from "@material-ui/icons/Search";
 
 // core components
-import NavbarDropdown from "components/Dropdowns/NavbarDropdown.js";
+//import NavbarDropdown from "components/Dropdowns/NavbarDropdown.js";
 
 import componentStyles from "assets/theme/components/admin-navbar.js";
 
@@ -67,7 +67,7 @@ export default function AdminNavbar({ brandText }) {
                     }}
                   />
                   </Box>*/}
-                <NavbarDropdown />
+                {/*<NavbarDropdown />*/}
               </Box>
             </Box>
           </Container>

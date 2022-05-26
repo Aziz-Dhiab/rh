@@ -14,7 +14,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Menu from "@material-ui/core/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 // @material-ui/icons components
-import AccountCircle from "@material-ui/icons/AccountCircle";
+//import AccountCircle from "@material-ui/icons/AccountCircle";
 import Clear from "@material-ui/icons/Clear";
 import Dashboard from "@material-ui/icons/Dashboard";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -66,22 +66,7 @@ export default function AuthNavbar() {
         />
         Dashboard
       </ListItem>
-      <ListItem
-        component={Link}
-        to="/auth/register"
-        onClick={handleMenuClose}
-        classes={{
-          root: classes.listItemRoot,
-        }}
-      >
-        <Box
-          component={AccountCircle}
-          width="1.25rem!important"
-          height="1.25rem!important"
-          marginRight=".5rem!important"
-        />
-        Register
-      </ListItem>
+      
       <ListItem
         component={Link}
         to="/auth/login"
@@ -196,12 +181,10 @@ export default function AuthNavbar() {
                   marginLeft="1.25rem!important"
                   marginRight="1.25rem!important"
                 />
-                {ListObject}
+                
               </Menu>
             </Hidden>
-            <Hidden smDown implementation="css">
-              {ListObject}
-            </Hidden>
+            
           </Container>
         </Toolbar>
       </AppBar>

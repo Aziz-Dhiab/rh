@@ -31,16 +31,8 @@ const AuthHeader = () => {
               color={theme.palette.white.main}
             >
               <Grid item lg={5} md={6} xs={12}>
-                <h1>Welcome!</h1>
-                <Box
-                  component="p"
-                  color={theme.palette.gray[400]}
-                  lineHeight="1.7"
-                  fontSize="1rem"
-                >
-                  Use these awesome forms to login or create new account in your
-                  project for free.
-                </Box>
+                <h1>Bienvenue!</h1>
+                
               </Grid>
             </Box>
           </Box>
